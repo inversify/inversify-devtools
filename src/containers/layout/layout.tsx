@@ -7,7 +7,7 @@ import windowActions from "../../actions/window_actions";
 const menuWidthPx = 53;
 
 function mapStateToPropsReposPage(state: any) {
-    return { 
+    return {
         window: state.get("window")
     };
 }
@@ -17,11 +17,11 @@ function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch) {
 }
 
 class AppLayout extends React.Component<any, any> {
-    
+
     public constructor(props: any) {
         super(props);
     }
-    
+
     public render() {
         let page = this.props.location.pathname.split("/").join("");
         let style = {
@@ -37,15 +37,15 @@ class AppLayout extends React.Component<any, any> {
             </div>
         );
     }
-    
+
     public componentDidMount() {
-        window.addEventListener('resize', (e) => { this._handleResize(); } );
+        window.addEventListener("resize", (e) => { this._handleResize(); } );
     }
-    
+
     public componentWillUnmount() {
-        window.removeEventListener('resize', (e) => { this._handleResize(); });
+        window.removeEventListener("resize", (e) => { this._handleResize(); });
     }
-    
+
     private _handleResize() {
         this.props.actions.resize(window.innerWidth, window.innerHeight);
     }
