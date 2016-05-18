@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+body {
+    min-height: 1000px
+}
+div#container {
+    height: 200px;
+    width: 300px;
+    overflow: scroll;
+    margin: 10px;
+    border: 1px solid #000
+}
+div#content {
+    height: 1000px;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cfd2da;
+    background-color: #1e1e1e;
+    overflow: hidden;
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+}
+
+li {
+    padding: 0px;
+}
+
+.main {
+    float: left;
+    overflow: hidden;
+}
+
+.menu {
+    background-color: #333333;
+    padding: 15px 0px;
+    width: 53px;
+    float: left;
+    overflow: hidden;
+}
+
+.menu li {
+    padding: 10px 0px;
+}
+
+.menu li a {
+    color: #adadad;
+    padding: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.menu li.active a {
+    color: #ffffff;
+}
+
+.menu li a:hover {
+    color: #ffffff;
+}
+
+.panel {
+    background-color: #252526;
+    width: 33%;
+    float: left;
+    padding: 10px 15px;
+    border-right: 2px solid #333333;
+    overflow-y: scroll;
+}
+
+.title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: normal;
+    font-size: 85%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.title h2, .title h6 {
+    font-family: inherit;
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.title h2 {
+    color: #ffffff;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3e3e3e;
+}
+
+.title h6 {
+    color: #adadad;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}

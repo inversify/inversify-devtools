@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": false
+    },
+    "files": [
+        "./typings/index.d.ts",
+        "./node_modules/immutable/dist/immutable.d.ts",
+        "./node_modules/redux-bootstrap/type_definitions/redux-bootstrap/redux-bootstrap.d.ts",
+        "./src/interfaces/interfaces.d.ts",
+        "./src/main.tsx"
+    ]
+}
