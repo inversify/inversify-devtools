@@ -24,14 +24,15 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
-    "inversify-logger-middleware": "^1.0.0-beta.1",
+    "inversify-dts": "^1.0.0",
+    "inversify-logger-middleware": "^1.0.0-beta.3",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
     "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
-    "redux-bootstrap": "^1.0.0-beta.3",
+    "redux-bootstrap": "^1.0.0-beta.4",
     "redux-immutable": "^3.0.6",
     "redux-thunk": "^2.0.1"
   },
