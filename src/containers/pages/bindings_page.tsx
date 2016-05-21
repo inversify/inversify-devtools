@@ -7,8 +7,8 @@ import BindingExplorer from "../../components/binding_explorer";
 import BindingPropsExplorer from "../../components/binding_props_explorer";
 
 function mapStateToPropsReposPage(state: any) {
-    return { 
-        window: state.get("window")
+    return {
+        app: state.get("app")
     };
 }
 
@@ -20,9 +20,9 @@ class BindingsPage extends React.Component<any, void> {
     public render() {
         return (
             <div>
-                <KernelExplorer height={this.props.window.get("windowHeight")} columnSize={4} />
-                <BindingExplorer height={this.props.window.get("windowHeight")} columnSize={4} />
-                <BindingPropsExplorer height={this.props.window.get("windowHeight")} columnSize={4} />
+                <KernelExplorer height={this.props.app.get("windowHeight")} columnSize={4} />
+                <BindingExplorer height={this.props.app.get("windowHeight")} columnSize={4} />
+                <BindingPropsExplorer height={this.props.app.get("windowHeight")} columnSize={4} />
             </div>
         );
     }

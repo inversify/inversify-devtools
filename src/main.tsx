@@ -1,14 +1,16 @@
 import thunk from "redux-thunk";
 import bootstrap from "redux-bootstrap";
 import routes from "./config/routes";
-import windowReducer from "./reducers/window_reducer";
+import appReducer from "./reducers/app_reducer";
+import logReducer from "./reducers/log_reducer";
 
 bootstrap({
     container: "root",
     initialState: {},
     middlewares: [thunk],
     reducers: {
-        window: windowReducer
+        app: appReducer,
+        log: logReducer
     },
     routes: routes
 });

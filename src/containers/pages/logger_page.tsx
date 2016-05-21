@@ -5,8 +5,9 @@ import RequestLog from "../../components/request_log";
 import loggerActions from "../../actions/logger_actions";
 
 function mapStateToPropsReposPage(state: any) {
-    return { 
-        window: state.get("window")
+    return {
+        app: state.get("app"),
+        log: state.get("log")
     };
 }
 
@@ -17,7 +18,7 @@ function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch) {
 class LoggerPage extends React.Component<any, void> {
     public render() {
         return (
-            <RequestLog height={this.props.window.get("windowHeight")} columnSize={4} />
+            <RequestLog height={this.props.app.get("windowHeight")} columnSize={4} log={this.props.log.get("entries")} />
         );
     }
 }

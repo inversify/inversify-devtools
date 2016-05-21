@@ -27,9 +27,9 @@ class SettingsEditor extends React.Component<any, any> {
         );
     }
 
-    private _renderCheckBoxField(name: string) {
+    private _renderCheckBoxField(name: string, index: number) {
         return(
-            <div className="checkbox">
+            <div className="checkbox" key={index}>
                 <label>
                     <input type="checkbox" /> {name}
                 </label>
@@ -45,7 +45,7 @@ class SettingsEditor extends React.Component<any, any> {
             "bindings.scope", "bindings.serviceIdentifier", "bindings.type", "target.metadata",
             "target.name", "target.serviceIdentifier"
         ];
-        return settings.map((s) => { return this._renderCheckBoxField(s); });
+        return settings.map((s, i) => { return this._renderCheckBoxField(s, i); });
     }
 
 }

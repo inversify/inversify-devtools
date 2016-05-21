@@ -38,8 +38,23 @@ function setUserSettings(settings: IUserSettings, cb: (e: boolean) => void): voi
     return null;
 }
 
-function getLogger() {
-    // 
+function getLogger(logEntry: (str: string) => void, dispatch: Redux.Dispatch): inversify.IMiddleware {
+
+    let settings: any = window.localStorage.getItem("inversify_settings");
+
+    if (settings === null) {
+        settings = getDefaultLoggerSettings();
+        window.localStorage.setItem("inversify_settings", JSON.stringify(settings));
+    } else {
+        settings = JSON.parse(settings);
+    }
+
+    let reduxRenderer = function(out: string) {
+        dispatch(logEntry(out));
+    };
+
+    let middleware = makeLoggerMiddleware(settings, reduxRenderer);
+    return middleware;
 }
 
 export { getUserSettings, setUserSettings, getLogger };

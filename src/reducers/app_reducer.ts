@@ -6,15 +6,16 @@ const defaultWindowState = Immutable.fromJS({
     windowWidth: window.innerWidth
 });
 
-const windowReducer: Redux.Reducer = (previousState: any = defaultWindowState, action: any) => {
+const appReducer: Redux.Reducer = (previousState: any = defaultWindowState, action: any) => {
     switch (action.type) {
         case ACTION_TYPES.RESIZE:
             return previousState.withMutations((ctx: any) => {
                 ctx.set("windowWidth", action.width).set("windowHeight", action.height);
             });
+        case ACTION_TYPES.APP_INIT_SUCCESS:
         default:
             return previousState;
     }
 };
 
-export default windowReducer;
+export default appReducer;
