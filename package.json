@@ -1,10 +1,12 @@
 {
   "name": "redux-bootstrap-example",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "description": "redux-bootstrap example",
   "main": "index.js",
   "scripts": {
-    "test": "gulp"
+    "test": "gulp",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard"
   },
   "repository": {
     "type": "git",
@@ -24,8 +26,8 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
-    "inversify-dts": "^1.0.0",
-    "inversify-logger-middleware": "^1.0.0-beta.3",
+    "inversify-dts": "^1.0.3",
+    "inversify-logger-middleware": "^1.0.0-beta.5",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
@@ -42,6 +44,8 @@
     "gulp": "^3.9.1",
     "gulp-tslint": "^5.0.0",
     "gulp-typescript": "^2.13.0",
+    "inversify": "^2.0.0-beta.8",
+    "publish-please": "^2.1.4",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",
