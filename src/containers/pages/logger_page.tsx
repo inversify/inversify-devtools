@@ -2,6 +2,7 @@ import * as React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import RequestLog from "../../components/request_log";
+import LogDetails from "../../components/log_details";
 import loggerActions from "../../actions/logger_actions";
 
 function mapStateToPropsReposPage(state: any) {
@@ -17,10 +18,23 @@ function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch) {
 
 class LoggerPage extends React.Component<any, void> {
     public render() {
+        
+        let entries: any = this.props.log.get("entries");
+        
+        let selectedEntry = entries.filter((entry: ISelectableLogEntry) => {
+            return entry.selected === true;
+        }).toJSON()[0];
+
         return (
-            <RequestLog height={this.props.app.get("windowHeight")}
-                        columnSize={4} log={this.props.log.get("entries")}
-                        selectRequest={this.props.actions.selectRequest.bind(this)} />
+            <div>
+
+                <RequestLog height={this.props.app.get("windowHeight")}
+                            columnSize={4} log={entries}
+                            selectRequest={this.props.actions.selectRequest.bind(this)} />
+
+                <LogDetails height={this.props.app.get("windowHeight")} columnSize={8} entry={selectedEntry} />
+
+            </div>
         );
     }
 }

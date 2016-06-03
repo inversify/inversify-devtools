@@ -1,4 +1,5 @@
 import { makeLoggerMiddleware } from "inversify-logger-middleware";
+import SelectableLogEntry from "./selectable_log_entry";
 
 let userSettings: IUserSettings = {
     request: {
@@ -38,7 +39,7 @@ function setUserSettings(settings: IUserSettings, cb: (e: boolean) => void): voi
     return null;
 }
 
-function getLogger(logEntry: (entry: inversifyLoggerMiddleware.ILogEntry) => void, dispatch: Redux.Dispatch): inversify.IMiddleware {
+function getLogger(addLogEntry: (entry: ISelectableLogEntry) => void, dispatch: Redux.Dispatch): inversify.IMiddleware {
 
     let settings: any = window.localStorage.getItem("inversify_settings");
 
@@ -50,7 +51,7 @@ function getLogger(logEntry: (entry: inversifyLoggerMiddleware.ILogEntry) => voi
     }
 
     let reduxRenderer = function(entry: inversifyLoggerMiddleware.ILogEntry) {
-        dispatch(logEntry(entry));
+        dispatch(addLogEntry(new SelectableLogEntry(entry)));
     };
 
     let middleware = makeLoggerMiddleware(settings, reduxRenderer);
