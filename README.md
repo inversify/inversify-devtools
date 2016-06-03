@@ -14,6 +14,7 @@
 A React/Redux application that powers the InversifyJS browser development tools.
 
 ![](https://raw.githubusercontent.com/inversify/inversify-devtools/master/media/log.png)
+![](https://raw.githubusercontent.com/inversify/inversify-devtools/master/media/log2.png)
 
 ### License
 
