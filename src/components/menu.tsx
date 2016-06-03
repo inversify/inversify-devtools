@@ -18,7 +18,12 @@ class Menu extends React.Component<any, any> {
                     </li>
                     <li className={ (this.props.page === "bindings") ? "active" : "" }>
                         <Link to="/bindings">
-                            <i className="fa fa-cube" aria-hidden="true" />
+                            <i className="fa fa-map-o" aria-hidden="true" />
+                        </Link>
+                    </li>
+                    <li className={ (this.props.page === "playground") ? "active" : "" }>
+                        <Link to="/playground">
+                            <i className="fa fa-play-circle-o" aria-hidden="true" />
                         </Link>
                     </li>
                     <li className={ (this.props.page === "settings") ? "active" : "" }>
