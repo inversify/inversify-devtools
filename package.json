@@ -1,7 +1,7 @@
 {
-  "name": "redux-bootstrap-example",
+  "name": "inversify-devtools",
   "version": "1.0.0-alpha.1",
-  "description": "redux-bootstrap example",
+  "description": "inversify-devtools",
   "main": "index.js",
   "scripts": {
     "test": "gulp",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/remojansen/redux-bootstrap-example.git"
+    "url": "git+https://github.com/inversify/inversify-devtools.git"
   },
   "keywords": [
     "redux",
@@ -20,13 +20,13 @@
   "author": "Remo H. Jansen <remo.jansen@wolksoftware.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/remojansen/redux-bootstrap-example/issues"
+    "url": "https://github.com/inversify/inversify-devtools/issues"
   },
-  "homepage": "https://github.com/remojansen/redux-bootstrap-example#readme",
+  "homepage": "https://github.com/inversify/inversify-devtools#readme",
   "dependencies": {
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
-    "inversify-dts": "^1.0.3",
+    "inversify-dts": "^1.0.5",
     "inversify-logger-middleware": "^1.0.0-beta.5",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
@@ -45,6 +45,7 @@
     "gulp-tslint": "^5.0.0",
     "gulp-typescript": "^2.13.0",
     "inversify": "^2.0.0-beta.8",
+    "reflect-metadata": "^0.1.3",
     "publish-please": "^2.1.4",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",

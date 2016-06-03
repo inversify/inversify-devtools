@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router";
 import Panel from "./panel";
-import { parseLogEntry } from "../utils/utils";
 
 class RequestLog extends React.Component<any, any> {
 
@@ -11,9 +10,8 @@ class RequestLog extends React.Component<any, any> {
 
     public render() {
 
-        let entries = this.props.log.map((eStr: string, i: number) => {
-            let eObj = parseLogEntry(eStr);
-            return this._renderEntry(eObj, i);
+        let entries = this.props.log.map((entry: inversifyLoggerMiddleware.ILogEntry, i: number) => {
+            return this._renderEntry(entry, i);
         });
 
         return (
@@ -24,12 +22,25 @@ class RequestLog extends React.Component<any, any> {
 
     }
 
-    private _renderEntry(entry: any, id: number) {
+    private _renderResult(entry: inversifyLoggerMiddleware.ILogEntry) {
+        return entry.error ? entry.exception.message : entry.results[0].constructor.name;
+    }
+
+    private _renderTime(entry: inversifyLoggerMiddleware.ILogEntry) {
+        return entry.error ? `ERROR!` : `SUCCESS: ${entry.time} ms`;
+    }
+
+    private _handleClick(entry: inversifyLoggerMiddleware.ILogEntry) {
+        this.props.selectRequest(entry);
+    }
+
+    private _renderEntry(entry: inversifyLoggerMiddleware.ILogEntry, id: number) {
+        let classes = `request requestBox ${entry.error ? "errorBox" : "successBox"}`;
         return (
-            <div key={id} className="request">
+            <div key={id} className={classes} onClick={(e) => { this._handleClick(entry); }}>
                 <div class="title">
-                    <h6>{entry.time}</h6>
-                    <h2>{entry.serviceIdentifier} => {entry.implementationType}</h2>
+                    <h6>{this._renderTime(entry)}</h6>
+                    <h2>{entry.serviceIdentifier} {"\u279e"} {this._renderResult(entry)}</h2>
                 </div>
             </div>
         );

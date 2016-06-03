@@ -11,9 +11,9 @@ let userSettings: IUserSettings = {
             implementationType: true,
             onActivation: false,
             provider: false,
-            scope: false,
-            serviceIdentifier: false,
-            type: false
+            scope: true,
+            serviceIdentifier: true,
+            type: true
         },
         serviceIdentifier: true,
         target: {

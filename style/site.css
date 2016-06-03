@@ -171,3 +171,19 @@ li {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+.requestBox {
+    min-height: 90px;
+}
+
+.successBox {
+    background-color: #1bc98e;
+}
+
+.errorBox {
+    background-color: #e64759;
+}
+
+.defaultBox {
+    background-color: #1ca8dd;
+}

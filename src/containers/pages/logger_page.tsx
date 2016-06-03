@@ -18,7 +18,9 @@ function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch) {
 class LoggerPage extends React.Component<any, void> {
     public render() {
         return (
-            <RequestLog height={this.props.app.get("windowHeight")} columnSize={4} log={this.props.log.get("entries")} />
+            <RequestLog height={this.props.app.get("windowHeight")}
+                        columnSize={4} log={this.props.log.get("entries")}
+                        selectRequest={this.props.actions.selectRequest.bind(this)} />
         );
     }
 }
