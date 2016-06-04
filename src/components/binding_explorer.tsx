@@ -49,19 +49,23 @@ class BindingExplorer extends React.Component<any, any> {
                     Services with more than one implementation are displayed in yellow.
                     Remember to add some metadata and constrints to avoid ambiguous match exceptions!
                 </div>
-                {this._renderBindings(this.props.bindings)}
+                {this._renderBindings(this.props.dictionary)}
             </Panel>
         );
     }
 
-    private _handleClick(binding: any) {
-        this.props.selectBinding(binding);
+    private _handleClick(keyVal: any) {
+        this.props.selectBinding(keyVal, this.props.kernelGuid);
+    }
+
+    private _renderClass(length: number) {
+        return (length > 1) ? "request requestBox warningBox" : "request requestBox defaultBox";
     }
 
     private _renderBindings(dictionary: any[]) {
         return dictionary.map((keyVal: any, id: number) => {
             return (
-                <div key={id} className={(keyVal.value.length > 1) ? "request requestBox warningBox" : "request requestBox defaultBox"}
+                <div key={id} className={this._renderClass(keyVal.value.length)}
                               onClick={(e) => { this._handleClick(keyVal); }}>
 
                     <div class="title">

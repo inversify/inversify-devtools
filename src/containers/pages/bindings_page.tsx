@@ -5,7 +5,6 @@ import bindingsActions from "../../actions/bindings_actions";
 import KernelExplorer from "../../components/kernel_explorer";
 import BindingExplorer from "../../components/binding_explorer";
 import BindingPropsExplorer from "../../components/binding_props_explorer";
-import SelectableKeyVal from "../../core/selectable_key_value_pair";
 
 function mapStateToPropsReposPage(state: any) {
     return {
@@ -26,14 +25,13 @@ class BindingsPage extends React.Component<any, void> {
         })[0];
 
         let dictionary: any[] = [];
-        let selectedKeyVal: any = [];
+        let valuesOfSelectedKey: any = [];
         if (selectedKernel) {
-            dictionary = (selectedKernel.details._bindingDictionary._dictionary).map((keyVal: any) => {
-                return new SelectableKeyVal(keyVal);
-            });
-            selectedKeyVal = dictionary.filter((keyVal: any) => {
+            dictionary = (selectedKernel.details._bindingDictionary._dictionary);
+            let selectedKeyVal = dictionary.filter((keyVal: any) => {
                 return keyVal.selected === true;
             })[0];
+            valuesOfSelectedKey = selectedKeyVal ? selectedKeyVal.value : [];
         }
 
         return (
@@ -43,11 +41,12 @@ class BindingsPage extends React.Component<any, void> {
                                 selectKernel={this.props.actions.selectKernel.bind(this)} />
 
                 <BindingExplorer height={this.props.app.get("windowHeight")}
-                                columnSize={4} bindings={dictionary}
+                                columnSize={4} dictionary={dictionary}
+                                kernelGuid={selectedKernel ? selectedKernel.guid : ""}
                                 selectBinding={this.props.actions.selectBinding.bind(this)}/>
 
                 <BindingPropsExplorer height={this.props.app.get("windowHeight")}
-                                      columnSize={4} bindings={selectedKeyVal.values}/>
+                                      columnSize={4} bindings={valuesOfSelectedKey}/>
 
             </div>
         );
