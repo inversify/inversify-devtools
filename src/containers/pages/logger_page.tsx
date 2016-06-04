@@ -18,9 +18,9 @@ function mapDispatchToPropsReposPage(dispatch: Redux.Dispatch) {
 
 class LoggerPage extends React.Component<any, void> {
     public render() {
-        
+
         let entries: any = this.props.log.get("entries");
-        
+
         let selectedEntry = entries.filter((entry: ISelectableLogEntry) => {
             return entry.selected === true;
         }).toJSON()[0];

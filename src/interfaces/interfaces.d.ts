@@ -11,6 +11,12 @@ interface IIdentifiable {
     guid: string;
 }
 
+interface ISelectableKernel extends ISelectable, IIdentifiable {
+    details: inversify.IKernel;
+    selected: boolean;
+    guid: string;
+}
+
 interface ISelectableLogEntry extends ISelectable, IIdentifiable {
     details: inversifyLoggerMiddleware.ILogEntry;
     selected: boolean;

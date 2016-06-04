@@ -16,9 +16,26 @@ class KernelExplorer extends React.Component<any, any> {
     public render() {
         return (
             <Panel title={"Kernels"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
-                // TODO
+                {this._renderKernels(this.props.kernels)}
             </Panel>
         );
+    }
+
+    private _handleClick(kernel: ISelectableKernel) {
+        this.props.selectKernel(kernel);
+    }
+
+    private _renderKernels(kernels: ISelectableKernel[]) {
+        return kernels.map((kernel: ISelectableKernel, id: number) => {
+            return (
+                <div key={id} className="request requestBox defaultBox" onClick={(e) => { this._handleClick(kernel); }}>
+                    <div class="title">
+                        <h6>GUID: {kernel.guid}</h6>
+                        <h2>Kernel</h2>
+                    </div>
+                </div>
+            );
+        });
     }
 }
 

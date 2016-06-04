@@ -167,13 +167,12 @@ li {
 }
 
 .request h2 {
-    font-size: 21px;
+    font-size: 18px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
 .requestBox {
-    min-height: 90px;
     color: #ffffff;
 }
 
@@ -189,13 +188,17 @@ li {
     background-color: #1ca8dd;
 }
 
+.warningBox {
+    background-color: #e4d836;
+}
+
 .customAlert {
     color: #1997c6;
     background-color: transparent;
     border-color: #1997c6;
     border: 1px solid;
     padding: 10px 16px;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.3333333;
     border-radius: 6px;
     margin-top: 5px;
@@ -216,7 +219,7 @@ li {
     border-color: #e33145;
     border: 1px solid;
     padding: 10px 16px;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.3333333;
     border-radius: 6px;
     margin-top: 5px;
