@@ -1,6 +1,6 @@
 {
   "name": "inversify-devtools",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "inversify-devtools",
   "main": "index.js",
   "scripts": {
