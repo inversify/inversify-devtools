@@ -1,15 +1,18 @@
+import interfaces from "../interfaces/interfaces";
 import { guid } from "../utils/utils";
 
-class SelectableLogEntry implements ISelectable, IIdentifiable {
+class SelectableLogEntry implements interfaces.Selectable,  interfaces.Displayable {
 
-    public details: inversifyLoggerMiddleware.ILogEntry;
+    public details: inversifyLoggerMiddleware.interfaces.LogEntry;
     public selected: boolean;
     public guid: string;
+    public visible: boolean;
 
-    public constructor(details: inversifyLoggerMiddleware.ILogEntry) {
+    public constructor(details: inversifyLoggerMiddleware.interfaces.LogEntry) {
         this.details = details;
         this.selected = false;
-        this.guid = guid();
+        this.visible = false;
+        this.guid = guid(); // TODO https://github.com/inversify/InversifyJS/issues/272
     }
 }
 

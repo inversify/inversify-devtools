@@ -43,11 +43,11 @@ class BindingExplorer extends React.Component<any, any> {
 
     public render() {
         return (
-            <Panel title={"Bindings"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
+            <Panel title={"Services"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
                 <div className="customAlert" role="alert">
                     <i className="fa fa-info-circle" aria-hidden="true"></i>
                     Services with more than one implementation are displayed in yellow.
-                    Remember to add some metadata and constrints to avoid ambiguous match exceptions!
+                    Remember to add some metadata and constraints to avoid ambiguous match exceptions!
                 </div>
                 {this._renderBindings(this.props.dictionary)}
             </Panel>

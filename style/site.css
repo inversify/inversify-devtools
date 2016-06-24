@@ -225,3 +225,32 @@ li {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.panelTopMenu ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    height: 35px;
+}
+
+.panelTopMenu li {
+    float: left;
+    width: 25%;
+}
+
+.panelTopMenu a {
+    background-color: rgb(79, 90, 101);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    width: 97%;
+    text-align: center;
+    display: table;
+    cursor: pointer;
+}
+
+.panelTopMenu a.active {
+    background-color: #1ca8dd;
+}

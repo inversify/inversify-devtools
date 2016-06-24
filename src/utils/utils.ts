@@ -10,6 +10,20 @@ function makeActionCreator(type: string, ...argNames: string[]) {
   };
 }
 
+function combineActionsGroups(...actionGroups: any[]) {
+  let mixing: any = {};
+  actionGroups.forEach((actionGroup: any) => {
+    Object.keys(actionGroup).forEach((key: string) => {
+      if (mixing[key] !== undefined) {
+        throw new Error("Mixing cannot be applied due to duplicated key!");
+      } else {
+        mixing[key] = actionGroup[key];
+      }
+    });
+  });
+  return mixing;
+}
+
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -20,4 +34,4 @@ function guid() {
     s4() + "-" + s4() + s4() + s4();
 }
 
-export { makeActionCreator, guid };
+export { makeActionCreator, combineActionsGroups, guid };

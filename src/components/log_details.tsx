@@ -2,6 +2,7 @@ import * as React from "react";
 import Panel from "./panel";
 import JSONTree from "react-json-tree";
 import theme from "../constants/json_tree_theme";
+import interfaces from "../interfaces/interfaces";
 
 class LogDetails extends React.Component<any, any> {
 
@@ -26,7 +27,7 @@ class LogDetails extends React.Component<any, any> {
         );
     }
 
-    private _renderEntry(entry: ISelectableLogEntry) {
+    private _renderEntry(entry: interfaces.SelectableLogEntry) {
 
         if (entry.details.error) {
 

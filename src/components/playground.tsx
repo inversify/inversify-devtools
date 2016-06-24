@@ -10,7 +10,7 @@ class Playground extends React.Component<any, any> {
 
     public render() {
         return (
-            <Panel title={"Playground"} subtitle={"InversifyJS"} 
+            <Panel title={"Playground"} subtitle={"Editor"}
                    columnSize={this.props.columnSize} height={this.props.height}>
 
                 <div className="customAlert" role="alert">

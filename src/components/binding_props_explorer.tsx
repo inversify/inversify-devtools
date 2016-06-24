@@ -12,7 +12,7 @@ class BindingPropsExplorer extends React.Component<any, any> {
 
     public render() {
         return (
-            <Panel title={"Binding Props"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
+            <Panel title={"Implementations"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
                 <div className="entryDetails">
                     <JSONTree data={this.props.bindings} theme={theme} isLightTheme={true} />
                 </div>

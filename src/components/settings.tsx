@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router";
 import Panel from "./panel";
+import getDefaultSettings from "../core/default_settings";
 
 class SettingsEditor extends React.Component<any, any> {
 
@@ -15,12 +16,21 @@ class SettingsEditor extends React.Component<any, any> {
                     <div className="form-group">
                         <label htmlFor="settings_log_size">Maximun Log Size:</label>
                         <input type="text" className="form-control" style={{ width: "50%" }}
-                               id="settings_log_size" placeholder="Maximun number of entries in the request log" />
+                               id="settings_log_size"
+                               placeholder="Maximun number of entries in the request log"
+                               defaultValue={this.props.settings.size} />
                     </div>
-                    <button type="button" className="btn btn-default">Save Changes</button>
+                    <button type="button" className="btn btn-default"
+                            onClick={this._handleSaveClick.bind(this)}>Save Changes</button>
                 </div>
             </Panel>
         );
+    }
+
+    private _handleSaveClick() {
+        let settings = getDefaultSettings();
+        settings.size = 20; // TODO
+        this.props.saveSettingsAsync(settings);
     }
 
 }

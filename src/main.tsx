@@ -4,32 +4,47 @@ import routes from "./config/routes";
 import appReducer from "./reducers/app_reducer";
 import logReducer from "./reducers/log_reducer";
 
+function render(container: string) {
+    bootstrap({
+        container: container,
+        initialState: {},
+        middlewares: [thunk],
+        reducers: {
+            app: appReducer,
+            log: logReducer
+        },
+        routes: routes
+    });
+}
+
 // TEMP
 import "reflect-metadata";
 import * as inversify from "inversify";
 let win: any = window;
 win.inversify = inversify;
 
-interface IWeapon {}
+interface Weapon {}
 
 @inversify.injectable()
-class Katana implements IWeapon {}
+class Katana implements Weapon {}
 
 @inversify.injectable()
-class Shuriken implements IWeapon {}
+class Shuriken implements Weapon {}
 
-interface INinja {
-    katana: IWeapon;
-    shuriken: IWeapon;
+interface Warrior {
+    katana: Weapon;
+    shuriken: Weapon;
 }
 
 @inversify.injectable()
-class Ninja implements INinja {
-    public katana: IWeapon;
-    public shuriken: IWeapon;
+class Ninja implements Warrior {
+
+    public katana: Weapon;
+    public shuriken: Weapon;
+
     public constructor(
-        @inversify.inject("IWeapon") @inversify.named("katana") katana: IWeapon,
-        @inversify.inject("IWeapon") @inversify.named("shuriken") shuriken: IWeapon
+        @inversify.inject("Weapon") @inversify.named("katana") katana: Weapon,
+        @inversify.inject("Weapon") @inversify.named("shuriken") shuriken: Weapon
     ) {
         this.katana = katana;
         this.shuriken = shuriken;
@@ -38,31 +53,25 @@ class Ninja implements INinja {
 
 let kernel = new inversify.Kernel();
 
-kernel.bind<INinja>("INinja").to(Ninja);
-kernel.bind<IWeapon>("IWeapon").to(Katana).whenTargetNamed("katana");
-kernel.bind<IWeapon>("IWeapon").to(Shuriken).whenTargetNamed("shuriken");
+kernel.bind<Warrior>("Warrior").to(Ninja);
+kernel.bind<Weapon>("Weapon").to(Katana).whenTargetNamed("katana");
+kernel.bind<Weapon>("Weapon").to(Shuriken).whenTargetNamed("shuriken");
 
 win.kernel = kernel;
 
-/*
-
-if (__inversifyDevtools__) {
-    __inversifyDevtools__(kernel);
+function demo() {
+    if (win.__inversifyDevtools__) {
+        win.__inversifyDevtools__(kernel);
+    }
+    kernel.get("ninja");
+    kernel.get("Warrior");
+    kernel.get("Weapon");
+    kernel.getNamed("Weapon", "shuriken");
+    kernel.getNamed("Weapon", "katana");
 }
 
-kernel.get("INinja");
-
-*/
-
+setTimeout(function() { demo(); }, 1000);
+render("root");
 // END TEMP
 
-bootstrap({
-    container: "root",
-    initialState: {},
-    middlewares: [thunk],
-    reducers: {
-        app: appReducer,
-        log: logReducer
-    },
-    routes: routes
-});
+export default render;

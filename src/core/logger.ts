@@ -1,56 +1,34 @@
 import { makeLoggerMiddleware } from "inversify-logger-middleware";
 import SelectableLogEntry from "./selectable_log_entry";
+import getDefaultSettings from "./default_settings";
+import interfaces from "../interfaces/interfaces";
 
-let userSettings: IUserSettings = {
-    request: {
-        bindings: {
-            activated: false,
-            cache: false,
-            constraint: false,
-            dynamicValue: false,
-            factory: false,
-            implementationType: true,
-            onActivation: false,
-            provider: false,
-            scope: true,
-            serviceIdentifier: true,
-            type: true
-        },
-        serviceIdentifier: true,
-        target: {
-            metadata: true,
-            name: false,
-            serviceIdentifier: false
-        }
-    },
-    size: 20,
-    time: true
-};
-
-function getDefaultLoggerSettings(): IUserSettings {
-    return userSettings;
-}
-
-function getUserSettings(): IUserSettings {
+function getUserSettings(): interfaces.UserSettings {
     return null;
 }
 
-function setUserSettings(settings: IUserSettings, cb: (e: boolean) => void): void {
+function setUserSettings(settings: interfaces.UserSettings, cb: (e: boolean) => void): void {
     return null;
 }
 
-function getLogger(addLogEntry: (entry: ISelectableLogEntry) => void, dispatch: Redux.Dispatch): inversify.IMiddleware {
+function getLogger(
+    addLogEntry: (entry: interfaces.SelectableLogEntry) => void,
+    initSettings: (settings: interfaces.UserSettings) => void,
+    dispatch: Redux.Dispatch
+): inversify.interfaces.Middleware {
 
     let settings: any = window.localStorage.getItem("inversify_settings");
 
     if (settings === null) {
-        settings = getDefaultLoggerSettings();
+        settings = getDefaultSettings();
         window.localStorage.setItem("inversify_settings", JSON.stringify(settings));
     } else {
         settings = JSON.parse(settings);
     }
 
-    let reduxRenderer = function(entry: inversifyLoggerMiddleware.ILogEntry) {
+    dispatch(initSettings(settings));
+
+    let reduxRenderer = function(entry: inversifyLoggerMiddleware.interfaces.LogEntry) {
         dispatch(addLogEntry(new SelectableLogEntry(entry)));
     };
 

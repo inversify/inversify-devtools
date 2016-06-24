@@ -1,15 +1,13 @@
-import { guid } from "../utils/utils";
+import interfaces from "../interfaces/interfaces";
 
-class SelectableKernel implements ISelectable, IIdentifiable {
+class SelectableKernel implements interfaces.Selectable {
 
-    public details: inversify.IKernel;
+    public details: inversify.interfaces.Kernel;
     public selected: boolean;
-    public guid: string;
 
-    public constructor(details: inversify.IKernel) {
+    public constructor(details: inversify.interfaces.Kernel) {
         this.details = details;
         this.selected = false;
-        this.guid = guid();
     }
 }
 
