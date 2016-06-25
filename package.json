@@ -1,6 +1,6 @@
 {
   "name": "inversify-devtools",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-beta.1",
   "description": "inversify-devtools",
   "main": "index.js",
   "scripts": {
@@ -26,8 +26,7 @@
   "dependencies": {
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
-    "inversify-dts": "^1.0.7",
-    "inversify-logger-middleware": "^1.0.0-beta.6",
+    "inversify-logger-middleware": "^1.0.0-rc.2",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-json-tree": "^0.7.4",
@@ -35,7 +34,7 @@
     "react-router": "^2.3.0",
     "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
-    "redux-bootstrap": "^1.0.0-beta.4",
+    "redux-bootstrap": "^1.0.0-rc.1",
     "redux-immutable": "^3.0.6",
     "redux-thunk": "^2.0.1",
     "rx": "^4.1.0"
@@ -45,7 +44,8 @@
     "gulp": "^3.9.1",
     "gulp-tslint": "^5.0.0",
     "gulp-typescript": "^2.13.0",
-    "inversify": "^2.0.0-beta.10",
+    "inversify": "^2.0.0-rc.1",
+    "inversify-dts": "^1.1.0",
     "publish-please": "^2.1.4",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
