@@ -22,7 +22,6 @@ namespace interfaces {
         details: inversifyLoggerMiddleware.interfaces.LogEntry;
         selected: boolean;
         visible: boolean;
-        guid: string;
     }
 
 }

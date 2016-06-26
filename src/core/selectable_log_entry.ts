@@ -1,5 +1,4 @@
 import interfaces from "../interfaces/interfaces";
-import { guid } from "../utils/utils";
 
 class SelectableLogEntry implements interfaces.Selectable,  interfaces.Displayable {
 
@@ -12,7 +11,6 @@ class SelectableLogEntry implements interfaces.Selectable,  interfaces.Displayab
         this.details = details;
         this.selected = false;
         this.visible = false;
-        this.guid = guid(); // TODO https://github.com/inversify/InversifyJS/issues/272
     }
 }
 

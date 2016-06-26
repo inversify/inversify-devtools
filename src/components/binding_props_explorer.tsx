@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import Panel from "./panel";
 import JSONTree from "react-json-tree";
 import theme from "../constants/json_tree_theme";
+import Tip from "./tip";
+import { scopeFormatter, bindingTypeFormatter } from "inversify-logger-middleware";
 
 class BindingPropsExplorer extends React.Component<any, any> {
 
@@ -13,12 +15,36 @@ class BindingPropsExplorer extends React.Component<any, any> {
     public render() {
         return (
             <Panel title={"Implementations"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
-                <div className="entryDetails">
-                    <JSONTree data={this.props.bindings} theme={theme} isLightTheme={true} />
-                </div>
+                {this._render()}
             </Panel>
         );
     }
+
+    private _formatBindings(bindings: inversify.interfaces.Binding<any>[]) {
+        return bindings.map((binding: inversify.interfaces.Binding<any>) => {
+            binding.scope = scopeFormatter(binding.scope);
+            binding.type = bindingTypeFormatter(binding.type);
+        });
+    }
+
+    private _render() {
+        if (this.props.bindings.length > 0) {
+            return (
+                <div className="entryDetails">
+                    <div style={{ overflowX: "scroll" }}>
+                        <JSONTree data={this.props.bindings} theme={theme} isLightTheme={true} />
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <Tip>
+                    Click on one of the services on the services panel (left) to see its binding!
+                </Tip>
+            );
+        }
+    }
+
 }
 
 export default BindingPropsExplorer;

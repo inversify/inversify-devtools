@@ -3,6 +3,7 @@ import Panel from "./panel";
 import JSONTree from "react-json-tree";
 import theme from "../constants/json_tree_theme";
 import interfaces from "../interfaces/interfaces";
+import Tip from "./tip";
 
 class LogDetails extends React.Component<any, any> {
 
@@ -20,10 +21,7 @@ class LogDetails extends React.Component<any, any> {
 
     private _renderTip() {
         return (
-            <div className="customAlert" role="alert">
-                <i className="fa fa-info-circle" aria-hidden="true"></i>
-                Click on one of the requests on the request log to see its details!
-            </div>
+            <Tip>Click on one of the requests on the request log to see its details!</Tip>
         );
     }
 
@@ -55,7 +53,9 @@ class LogDetails extends React.Component<any, any> {
                         {stack}
                     </div>
                     <div className="entryDetails">
-                        <JSONTree data={entry.details} theme={theme} isLightTheme={true} />
+                        <div style={{ overflowX: "scroll" }}>
+                            <JSONTree data={entry.details} theme={theme} isLightTheme={true} />
+                        </div>
                     </div>
                 </div>
             );
@@ -63,7 +63,9 @@ class LogDetails extends React.Component<any, any> {
         } else {
             return (
                 <div className="entryDetails">
-                    <JSONTree data={entry.details} theme={theme} isLightTheme={true} />
+                    <div style={{ overflowX: "scroll" }}>
+                        <JSONTree data={entry.details} theme={theme} isLightTheme={true} />
+                    </div>
                 </div>
             );
         }

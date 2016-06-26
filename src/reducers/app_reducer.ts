@@ -1,7 +1,6 @@
 import * as Immutable from "immutable";
 import ACTION_TYPES from "../constants/action_types";
 import interfaces from "../interfaces/interfaces";
-import { guid } from "../utils/utils";
 
 const defaulttate = Immutable.fromJS({
     kernels: [],
@@ -21,7 +20,6 @@ function initAppSuccess(previousState: any, action: any) {
     let dictionary = (<any>action.kernel.details)._bindingDictionary._dictionary;
     dictionary.forEach((keyValPair: inversify.interfaces.KeyValuePair<any>) => {
         (<any>keyValPair).selected = false;
-        (<any>keyValPair).guid = guid(); // TODO https://github.com/inversify/InversifyJS/issues/272
     });
     let updatedKernels = kernels.push(action.kernel);
     return previousState.set("kernels", updatedKernels);
@@ -46,7 +44,7 @@ function selectBinding(previousState: any, action: any) {
         if (kernel.details.guid === action.kernelGuid) {
             let dictionary = (<any>kernel.details)._bindingDictionary._dictionary;
             dictionary = dictionary.map((keyValPair: inversify.interfaces.KeyValuePair<any>) => {
-                (<any>keyValPair).selected = ((<any>keyValPair).guid === action.keyVal.guid);
+                (<any>keyValPair).selected = (keyValPair.guid === action.keyVal.guid);
                 return keyValPair;
             });
         }

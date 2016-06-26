@@ -16,7 +16,7 @@ function addLogEntry(previousState: any, action: any) {
 function selectLogEntry(previousState: any, action: any) {
     let entries = previousState.get("entries");
     let updatedEntries = entries.map((entry: interfaces.SelectableLogEntry) => {
-        entry.selected = (entry.guid === action.entry.guid);
+        entry.selected = (entry.details.guid === action.entry.details.guid);
         return entry;
     });
     return previousState.set("entries", updatedEntries);

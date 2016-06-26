@@ -1,39 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router";
 import Panel from "./panel";
-
-// TODO
-// import { scopeFormatter, bindingTypeFormatter } from "inversify-logger-middleware";
-
-function bindingTypeFormatter(type: number) {
-    switch (type) {
-        case 1:
-            return "Instance";
-        case 2:
-            return "ConstantValue";
-        case 3:
-            return "DynamicValue";
-        case 4:
-            return "Constructor";
-        case 5:
-            return "Factory";
-        case 6:
-            return "Provider";
-        case 0:
-        default:
-            return "Invalid";
-    }
-}
-
-function scopeFormatter(scope: number) {
-    switch (scope) {
-        case 1:
-            return "Singleton";
-        case 0:
-        default:
-            return "Transient";
-    }
-}
+import Tip from "./tip";
 
 class BindingExplorer extends React.Component<any, any> {
 
@@ -44,14 +12,27 @@ class BindingExplorer extends React.Component<any, any> {
     public render() {
         return (
             <Panel title={"Services"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
-                <div className="customAlert" role="alert">
-                    <i className="fa fa-info-circle" aria-hidden="true"></i>
-                    Services with more than one implementation are displayed in yellow.
-                    Remember to add some metadata and constraints to avoid ambiguous match exceptions!
-                </div>
+                {this._renderTip()}
                 {this._renderBindings(this.props.dictionary)}
             </Panel>
         );
+    }
+
+    private _renderTip() {
+        if (this.props.dictionary.length === 0) {
+            return (
+                <Tip>
+                    Click on one of the kernels on the kernel panel (left) to see its binding!
+                </Tip>
+            );
+        } else {
+            return (
+                <Tip>
+                    Services with more than one implementation are displayed in yellow.
+                    Remember to add some metadata and constraints to avoid ambiguous match exceptions!
+                </Tip>
+            );
+        }
     }
 
     private _handleClick(keyVal: any) {
@@ -62,7 +43,7 @@ class BindingExplorer extends React.Component<any, any> {
         return (length > 1) ? "request requestBox warningBox" : "request requestBox defaultBox";
     }
 
-    private _renderBindings(dictionary: any[]) {
+private _renderBindings(dictionary: any[]): JSX.Element[] {
         return dictionary.map((keyVal: any, id: number) => {
             return (
                 <div key={id} className={this._renderClass(keyVal.value.length)}
