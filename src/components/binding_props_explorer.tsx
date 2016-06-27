@@ -21,18 +21,20 @@ class BindingPropsExplorer extends React.Component<any, any> {
     }
 
     private _formatBindings(bindings: inversify.interfaces.Binding<any>[]) {
-        return bindings.map((binding: inversify.interfaces.Binding<any>) => {
+        return bindings.map((binding: any) => {
             binding.scope = scopeFormatter(binding.scope);
             binding.type = bindingTypeFormatter(binding.type);
+            return binding;
         });
     }
 
     private _render() {
         if (this.props.bindings.length > 0) {
+            let bindings = this._formatBindings(this.props.bindings);
             return (
                 <div className="entryDetails">
                     <div style={{ overflowX: "scroll" }}>
-                        <JSONTree data={this.props.bindings} theme={theme} isLightTheme={true} />
+                        <JSONTree data={bindings} theme={theme} isLightTheme={true} />
                     </div>
                 </div>
             );

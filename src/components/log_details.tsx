@@ -1,6 +1,7 @@
 import * as React from "react";
 import Panel from "./panel";
 import JSONTree from "react-json-tree";
+import { scopeFormatter, bindingTypeFormatter } from "inversify-logger-middleware";
 import theme from "../constants/json_tree_theme";
 import interfaces from "../interfaces/interfaces";
 import Tip from "./tip";
@@ -23,6 +24,22 @@ class LogDetails extends React.Component<any, any> {
         return (
             <Tip>Click on one of the requests on the request log to see its details!</Tip>
         );
+    }
+
+    private _formatBindings(bindings: inversify.interfaces.Binding<any>[]) {
+        return bindings.map((binding: any) => {
+            binding.scope = scopeFormatter(binding.scope);
+            binding.type = bindingTypeFormatter(binding.type);
+            return binding;
+        });
+    }
+
+    private _formatRequest(request: inversify.interfaces.Request) {
+        request.bindings = this._formatBindings(request.bindings);
+        request.childRequests = request.childRequests.map((childRequest: inversify.interfaces.Request) => {
+            return this._formatRequest(childRequest);
+        });
+        return request;
     }
 
     private _renderEntry(entry: interfaces.SelectableLogEntry) {
@@ -61,6 +78,7 @@ class LogDetails extends React.Component<any, any> {
             );
 
         } else {
+            entry.details.rootRequest = this._formatRequest(entry.details.rootRequest);
             return (
                 <div className="entryDetails">
                     <div style={{ overflowX: "scroll" }}>

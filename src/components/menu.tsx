@@ -26,7 +26,7 @@ class Menu extends React.Component<any, any> {
                             <i className="fa fa-play-circle-o" aria-hidden="true" />
                         </Link>
                     </li>
-                    <li className={ (this.props.page === "settings") ? "hide active" : "hide" }> /* TEMP HIDE CLASS */
+                    <li className={ (this.props.page === "settings") ? "active" : "" }>
                         <Link to="/settings">
                             <i className="fa fa-sliders" aria-hidden="true" />
                         </Link>

@@ -43,7 +43,7 @@ class BindingExplorer extends React.Component<any, any> {
         return (length > 1) ? "request requestBox warningBox" : "request requestBox defaultBox";
     }
 
-private _renderBindings(dictionary: any[]): JSX.Element[] {
+    private _renderBindings(dictionary: any[]): JSX.Element[] {
         return dictionary.map((keyVal: any, id: number) => {
             return (
                 <div key={id} className={this._renderClass(keyVal.value.length)}
