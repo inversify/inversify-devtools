@@ -19,14 +19,13 @@ A React/Redux application that powers the InversifyJS browser development tools.
 
 You can use this project to add features to the suported browsers extensions.
 
-### Instalaltion
+### How to use this project?
 
-**IMPORTANT**: this project is only for contributors. If you are  an InverisfyJS user looking for a browser
+**IMPORTANT**: this project is designed for contributors not for users. If you are  an InverisfyJS user looking for a browser
 extension you should visit the  extension projects:
 
 - [inversify-chrome-devtools](https://github.com/inversify/inversify-chrome-devtools)
 
-### Development
 To use this project you must install it using npm:
 
 ```
