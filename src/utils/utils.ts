@@ -1,3 +1,6 @@
+
+import { scopeFormatter, bindingTypeFormatter } from "inversify-logger-middleware";
+
 function makeActionCreator(type: string, ...argNames: string[]) {
   return function(...args: any[]) {
     let action: any = { type : type };
@@ -24,4 +27,16 @@ function combineActionsGroups(...actionGroups: any[]) {
   return mixing;
 }
 
-export { makeActionCreator, combineActionsGroups };
+function formatBindings(bindings: inversify.interfaces.Binding<any>[]) {
+      return bindings.map((binding: any) => {
+          if (typeof binding.scope === "number") {
+                binding.scope = scopeFormatter(binding.scope);
+          }
+          if (typeof binding.type === "number") {
+              binding.type = bindingTypeFormatter(binding.type);
+          }
+          return binding;
+      });
+  }
+
+export { makeActionCreator, combineActionsGroups, formatBindings };

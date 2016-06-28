@@ -2,9 +2,8 @@ import * as Immutable from "immutable";
 import ACTION_TYPES from "../constants/action_types";
 import interfaces from "../interfaces/interfaces";
 
-const defaulttate = Immutable.fromJS({
+const defaultState = Immutable.fromJS({
     kernels: [],
-    settings: null,
     windowHeight: window.innerHeight,
     windowWidth: window.innerWidth
 });
@@ -53,15 +52,7 @@ function selectBinding(previousState: any, action: any) {
     return previousState.set("kernels", updatedKernels);
 }
 
-function saveSettingsSuccess(previousState: any, action: any) {
-    return previousState.set("settings", action.settings);
-}
-
-function saveSettingsError(previousState: any, action: any) {
-    console.log("TODO!");
-}
-
-const appReducer: Redux.Reducer = (previousState: any = defaulttate, action: any) => {
+const appReducer: Redux.Reducer = (previousState: any = defaultState, action: any) => {
     switch (action.type) {
         case ACTION_TYPES.RESIZE:
             return resize(previousState, action);
@@ -73,10 +64,6 @@ const appReducer: Redux.Reducer = (previousState: any = defaulttate, action: any
             return selectKernel(previousState, action);
         case ACTION_TYPES.SELECT_BINDING:
             return selectBinding(previousState, action);
-        case ACTION_TYPES.SAVE_SETTINGS_SUCCESS:
-            return saveSettingsSuccess(previousState, action);
-        case ACTION_TYPES.SAVE_SETTINGS_ERROR:
-            return saveSettingsError(previousState, action);
         default:
             return previousState;
     }

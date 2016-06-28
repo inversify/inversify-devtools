@@ -18,7 +18,6 @@ function appInitAsync() {
             dispatch(appInitSuccess(selectableKernel));
         };
 
-        // TODO EXPOSE TO CHROME DEV TOOLS???
         let win: any = window;
         win.__inversifyDevtools__ = attachLogger;
 

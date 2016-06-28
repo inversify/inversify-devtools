@@ -7,6 +7,9 @@ class SettingsEditor extends React.Component<any, any> {
 
     public constructor(props: any) {
         super(props);
+        this.state = {
+            size: props.settings.size
+        };
     }
 
     public render() {
@@ -18,7 +21,8 @@ class SettingsEditor extends React.Component<any, any> {
                         <input type="text" className="form-control" style={{ width: "50%" }}
                                id="settings_log_size"
                                placeholder="Maximun number of entries in the request log"
-                               defaultValue={this.props.settings.size} />
+                               value={this.state.size}
+                               onChange={(e: any) => { this._handleChange("size", e.target.value); }} />
                     </div>
                     <button type="button" className="btn btn-default"
                             onClick={this._handleSaveClick.bind(this)}>Save Changes</button>
@@ -27,9 +31,15 @@ class SettingsEditor extends React.Component<any, any> {
         );
     }
 
+    private _handleChange(property: string, value: any) {
+        let update: any = {};
+        update[property] = value;
+        this.setState(update);
+    }
+
     private _handleSaveClick() {
         let settings = getDefaultSettings();
-        settings.size = 20; // TODO
+        settings.size = this.state.size;
         this.props.saveSettingsAsync(settings);
     }
 
