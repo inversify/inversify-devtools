@@ -24,10 +24,6 @@ function initAppSuccess(previousState: any, action: any) {
     return previousState.set("kernels", updatedKernels);
 }
 
-function initSettingsSuccess(previousState: any, action: any) {
-    return previousState.set("settings", action.settings);
-}
-
 function selectKernel(previousState: any, action: any) {
     let kernels = previousState.get("kernels");
     let updatedKernels = kernels.map((kernel: interfaces.SelectableKernel) => {
@@ -58,8 +54,6 @@ const appReducer: Redux.Reducer = (previousState: any = defaultState, action: an
             return resize(previousState, action);
         case ACTION_TYPES.APP_INIT_SUCCESS:
             return initAppSuccess(previousState, action);
-        case ACTION_TYPES.APP_SETTINGS_SUCCESS:
-            return initSettingsSuccess(previousState, action);
         case ACTION_TYPES.SELECT_KERNEL:
             return selectKernel(previousState, action);
         case ACTION_TYPES.SELECT_BINDING:

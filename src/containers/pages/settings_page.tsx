@@ -10,7 +10,8 @@ let actions = combineActionsGroups(loggerActions, settingsActions);
 
 function mapStateToPropsReposPage(state: any) {
     return {
-        app: state.get("app")
+        app: state.get("app"),
+        settings: state.get("settings")
     };
 }
 
@@ -22,7 +23,7 @@ class SettingsPage extends React.Component<any, void> {
     public render() {
         return (
            <SettingsEditor height={this.props.app.get("windowHeight")}
-                           columnSize={12} settings={this.props.app.get("settings")}
+                           columnSize={12} settings={this.props.settings.get("settings")}
                            saveSettingsAsync={this.props.actions.saveSettingsAsync.bind(this)} />
         );
     }

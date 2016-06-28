@@ -12,7 +12,8 @@ function render(container: string) {
         middlewares: [thunk],
         reducers: {
             app: appReducer,
-            log: logReducer
+            log: logReducer,
+            settings: settingReducer
         },
         routes: routes
     });
@@ -71,7 +72,8 @@ function demo() {
     kernel.getNamed("Weapon", "katana");
 }
 
-setTimeout(function() { demo(); }, 1000);
+// setTimeout(function() { demo(); }, 1000);
+
 render("root");
 // END TEMP
 

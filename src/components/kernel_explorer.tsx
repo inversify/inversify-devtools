@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "react-router";
 import Panel from "./panel";
 import interfaces from "../interfaces/interfaces";
+import Tip from "./tip";
 
 const dir = {
     close: "&#9657",
@@ -17,9 +18,22 @@ class KernelExplorer extends React.Component<any, any> {
     public render() {
         return (
             <Panel title={"Kernels"} subtitle={"Explorer"} columnSize={this.props.columnSize} height={this.props.height}>
-                {this._renderKernels(this.props.kernels)}
+                {this._render()}
             </Panel>
         );
+    }
+
+    private _render() {
+        if (this.props.kernels.length > 0) {
+            let kernels = this._renderKernels(this.props.kernels);
+            return <div>{kernels}</div>;
+        } else {
+            return <Tip>
+                No Kernels found! Use global
+                <span className="label label-default" style={{backgroundColor: "transparent"}}>__inversifyDevtools__</span>
+                to connect a kernel.
+            </Tip>;
+        }
     }
 
     private _handleClick(kernel: interfaces.SelectableKernel) {
@@ -38,6 +52,7 @@ class KernelExplorer extends React.Component<any, any> {
             );
         });
     }
+
 }
 
 export default KernelExplorer;
