@@ -9,6 +9,11 @@ const defaultWindowState = Immutable.fromJS({
 
 function addLogEntry(previousState: any, action: any) {
     let entries = previousState.get("entries");
+    if (entries.size === action.logSize) {
+        let indexToRemove = 0;
+        let numberToRemove = 1;
+        entries = entries.splice(indexToRemove, numberToRemove);
+    }
     let updatedEntries = entries.push(action.entry);
     return previousState.set("entries", updatedEntries);
 }

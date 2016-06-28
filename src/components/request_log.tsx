@@ -20,7 +20,7 @@ class RequestLog extends React.Component<any, any> {
     }
 
     private _render() {
-        if (this.props.log.length > 0) {
+        if (this.props.log.size > 0) {
             let entries = this.props.log.map((entry: interfaces.SelectableLogEntry, i: number) => {
                 return this._renderEntry(entry, i);
             });

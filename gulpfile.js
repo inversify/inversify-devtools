@@ -34,14 +34,14 @@ var tsLibProject = tsc.createProject("tsconfig.json");
 
 gulp.task("build", function() {
     return gulp.src([
-        "./typings/index.d.ts",
-        "./node_modules/immutable/dist/immutable.d.ts",
-        "./node_modules/redux-bootstrap/type_definitions/redux-bootstrap/redux-bootstrap.d.ts",
-        "./node_modules/inversify/type_definitions/inversify/inversify.d.ts",
-        "./node_modules/inversify-dts/inversify-logger-middleware/inversify-logger-middleware.d.ts",
-        "./src/interfaces/interfaces.d.ts",
-        "./src/**/**.ts",
-        "./src/**/**.tsx"
+        "typings/index.d.ts",
+        "node_modules/immutable/dist/immutable.d.ts",
+        "node_modules/redux-bootstrap/type_definitions/redux-bootstrap/redux-bootstrap.d.ts",
+        "node_modules/inversify/type_definitions/inversify/inversify.d.ts",
+        "node_modules/inversify-dts/inversify-logger-middleware/inversify-logger-middleware.d.ts",
+        "src/interfaces/interfaces.d.ts",
+        "src/**/**.ts",
+        "src/**/**.tsx"
     ])
     .pipe(tsc(tsLibProject))
     .on("error", function (err) {

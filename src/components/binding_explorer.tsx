@@ -51,7 +51,7 @@ class BindingExplorer extends React.Component<any, any> {
 
                     <div class="title">
                         <h6>IMPLEMENTATIONS: {keyVal.value.length}</h6>
-                        <h2>{keyVal.serviceIdentifier}</h2>
+                        <h2>{keyVal.serviceIdentifier.toString()}</h2>
                     </div>
 
                 </div>

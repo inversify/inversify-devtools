@@ -39,7 +39,7 @@ class SettingsEditor extends React.Component<any, any> {
 
     private _handleSaveClick() {
         let settings = getDefaultSettings();
-        settings.size = this.state.size;
+        settings.size = parseInt(this.state.size, null);
         this.props.saveSettingsAsync(settings);
     }
 

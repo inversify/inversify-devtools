@@ -3,19 +3,7 @@ import SelectableLogEntry from "./selectable_log_entry";
 import getDefaultSettings from "./default_settings";
 import interfaces from "../interfaces/interfaces";
 
-function getUserSettings(): interfaces.UserSettings {
-    return null;
-}
-
-function setUserSettings(settings: interfaces.UserSettings, cb: (e: boolean) => void): void {
-    return null;
-}
-
-function getLogger(
-    addLogEntry: (entry: interfaces.SelectableLogEntry) => void,
-    initSettings: (settings: interfaces.UserSettings) => void,
-    dispatch: Redux.Dispatch
-): inversify.interfaces.Middleware {
+function getSettings() {
 
     let settings: any = window.localStorage.getItem("inversify_settings");
 
@@ -26,14 +14,26 @@ function getLogger(
         settings = JSON.parse(settings);
     }
 
+    return settings;
+
+}
+
+function getLogger(
+    addLogEntry: (entry: interfaces.SelectableLogEntry, logSize: number) => void,
+    initSettings: (settings: interfaces.UserSettings) => void,
+    dispatch: Redux.Dispatch
+): inversify.interfaces.Middleware {
+
+    let settings = getSettings();
+
     dispatch(initSettings(settings));
 
     let reduxRenderer = function(entry: inversifyLoggerMiddleware.interfaces.LogEntry) {
-        dispatch(addLogEntry(new SelectableLogEntry(entry)));
+        dispatch(addLogEntry(new SelectableLogEntry(entry), getSettings().size));
     };
 
     let middleware = makeLoggerMiddleware(settings, reduxRenderer);
     return middleware;
 }
 
-export { getUserSettings, setUserSettings, getLogger };
+export { getLogger };
