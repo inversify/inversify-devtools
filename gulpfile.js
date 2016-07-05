@@ -7,7 +7,10 @@
 var gulp        = require("gulp"),
     tslint      = require("gulp-tslint"),
     tsc         = require("gulp-typescript"),
-    runSequence = require("run-sequence");
+    runSequence = require("run-sequence"),
+    browserify  = require("browserify"),
+    source      = require("vinyl-source-stream"),
+    buffer      = require("vinyl-buffer");
 
 //******************************************************************************
 //* LINT ALL
@@ -48,11 +51,33 @@ gulp.task("build", function() {
 });
 
 //******************************************************************************
+//* BUNDLE SOURCE
+//******************************************************************************
+gulp.task("bundle", function() {
+
+  var mainFilePath = "lib/main.js";
+  var outputFolder   = "bundle";
+  var outputFileName = "app.js";
+
+  var bundler = browserify({
+    debug: true
+  });
+
+  // TS compiler options are in tsconfig.json file
+  return bundler.add(mainFilePath)
+                .bundle()
+                .pipe(source(outputFileName))
+                .pipe(buffer())
+                .pipe(gulp.dest(outputFolder));
+});
+
+//******************************************************************************
 //* TASK GROUPS
 //******************************************************************************
 gulp.task("default", function (cb) {
   runSequence(
     "lint",
     "build",
+    "bundle",
     cb);
 });

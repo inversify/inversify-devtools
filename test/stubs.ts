@@ -45,24 +45,14 @@ kernel.bind<Warrior>(TYPES.Warrior).to(Ninja);
 kernel.bind<Weapon>(TYPES.Weapon).to(Katana).whenTargetNamed(TAGS.katana);
 kernel.bind<Weapon>(TYPES.Weapon).to(Shuriken).whenTargetNamed(TAGS.shuriken);
 
-function useDevtools() {
-
+function useDevtools(addKernel: (kernel: inversify.interfaces.Kernel) => void) {
     let win: any = window;
-    win.kernel = kernel;
-
-    if (win.__inversifyDevtools__) {
-        win.__inversifyDevtools__(kernel);
-    }
-
+    win.kernel = addKernel(kernel);
     kernel.get("ninja");
     kernel.get(TYPES.Warrior);
     kernel.get(TYPES.Weapon);
     kernel.getNamed(TYPES.Weapon, TAGS.shuriken);
     kernel.getNamed(TYPES.Weapon, TAGS.katana);
-
 }
 
-// render("root");
-// setTimeout(() => { useDevtools(); }, 1000);
-
-export { useDevtools };
+export default useDevtools;

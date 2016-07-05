@@ -6,7 +6,8 @@ import logReducer from "./reducers/log_reducer";
 import settingReducer from "./reducers/setting_reducer";
 
 function render(container: string) {
-    bootstrap({
+
+    let result = bootstrap({
         container: container,
         initialState: {},
         middlewares: [thunk],
@@ -17,6 +18,10 @@ function render(container: string) {
         },
         routes: routes
     });
+    let state = result.store.getState();
+    let connectKernel: (kernel: inversify.interfaces.Kernel) => void = state.get("app").get("__inversifyDevtools__");
+    return connectKernel;
+
 }
 
 export default render;

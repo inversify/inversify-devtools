@@ -39,10 +39,10 @@ $ npm install --save-dev inversify-dts
 import render from "inversify-devtools";
 
 let containerId = "root";
-render(containerId);
+let connectKernel = render(containerId);
 ```
 
-This will create a global function named `__inversifyDevtools__`. 
+This will return a function named `connectKernel`. 
 You can use this function to connect an instance of the `Kernel` class to the devtools:
 
 ```ts
@@ -52,10 +52,7 @@ import { Kernel } from "inversify";
 
 let win: any = window;
 let kernel = new Kernel();
-
-if (win.__inversifyDevtools__) {
-    win.__inversifyDevtools__(kernel);
-}
+connectKernel(kernel);
 ```
 
 ### License
