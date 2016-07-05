@@ -30,16 +30,13 @@ typings
 # build
 temp
 bundle
+lib
 node_modulestypings
-media
-src
-test
 
 # Optional npm cache directory
 .npm
 
 # Optional REPL history
 .node_repl_history
-.typingsrc
 
-lib
+.typingsrc
