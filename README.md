@@ -21,10 +21,8 @@ You can use this project to add features to the suported browsers extensions.
 
 ### How to use this project?
 
-**IMPORTANT**: this project is designed for contributors not for users. If you are  an InverisfyJS user looking for a browser
-extension you should visit the extension projects:
-
-- [inversify-chrome-devtools](https://github.com/inversify/inversify-chrome-devtools)
+> NOTE: this project contains a web applicaiton used to power the browser extansions. If you are  an InverisfyJS user looking for a browser extension you should visit the extension projects:
+> - [inversify-chrome-devtools](https://github.com/inversify/inversify-chrome-devtools)
 
 To use this project you must install it using npm:
 
@@ -37,22 +35,16 @@ $ npm install --save-dev inversify-dts
 /// <reference path="node_modules/inversify-dts/inversify-devtools/inversify-devtools.d.ts"/>
 
 import render from "inversify-devtools";
+import { Kernel } from "inversify";
 
 let containerId = "root";
 let connectKernel = render(containerId);
-```
-
-This will return a function named `connectKernel`. 
-You can use this function to connect an instance of the `Kernel` class to the devtools:
-
-```ts
-/// <reference path="node_modules/inversify-dts/inversify/inversify.d.ts"/>
-
-import { Kernel } from "inversify";
-
-let win: any = window;
 let kernel = new Kernel();
 connectKernel(kernel);
+```
+
+You can use the `connectKernel` function to connect an instance of the `Kernel` class to the devtools:
+
 ```
 
 ### License
