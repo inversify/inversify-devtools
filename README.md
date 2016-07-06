@@ -22,7 +22,7 @@ You can use this project to add features to the suported browsers extensions.
 ### How to use this project?
 
 **IMPORTANT**: this project is designed for contributors not for users. If you are  an InverisfyJS user looking for a browser
-extension you should visit the  extension projects:
+extension you should visit the extension projects:
 
 - [inversify-chrome-devtools](https://github.com/inversify/inversify-chrome-devtools)
 
