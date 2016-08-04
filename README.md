@@ -45,10 +45,10 @@ connectKernel(kernel);
 
 You can use the `connectKernel` function to connect an instance of the `Kernel` class to the devtools:
 
-```
+
 
 ### License
-
+```
 License under the MIT License (MIT)
 
 Copyright © 2015 [Remo H. Jansen](http://www.remojansen.com)
