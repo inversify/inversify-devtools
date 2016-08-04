@@ -48,7 +48,6 @@ You can use the `connectKernel` function to connect an instance of the `Kernel` 
 
 
 ### License
-```
 License under the MIT License (MIT)
 
 Copyright © 2015 [Remo H. Jansen](http://www.remojansen.com)
