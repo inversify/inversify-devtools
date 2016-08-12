@@ -30,6 +30,7 @@ To use this project you must install it using npm:
 $ npm install --save inversify-devtools
 $ npm install --save-dev inversify-dts
 ```
+You can use the `connectKernel` function to connect an instance of the `Kernel` class to the devtools:
 
 ```ts
 /// <reference path="node_modules/inversify-dts/inversify-devtools/inversify-devtools.d.ts"/>
@@ -42,10 +43,6 @@ let connectKernel = render(containerId);
 let kernel = new Kernel();
 connectKernel(kernel);
 ```
-
-You can use the `connectKernel` function to connect an instance of the `Kernel` class to the devtools:
-
-
 
 ### License
 License under the MIT License (MIT)
