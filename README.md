@@ -21,7 +21,7 @@ You can use this project to add features to the suported browsers extensions.
 
 ### How to use this project?
 
-> NOTE: this project contains a web applicaiton used to power the browser extansions. If you are  an InverisfyJS user looking for a browser extension you should visit the extension projects:
+> NOTE: this project contains a web applicaiton used to power the browser extensions. If you are  an InverisfyJS user looking for a browser extension you should visit the extension projects:
 > - [inversify-chrome-devtools](https://github.com/inversify/inversify-chrome-devtools)
 
 To use this project you must install it using npm:
